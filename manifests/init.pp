@@ -1,7 +1,7 @@
 class autossh {
   include stdlib
 
-  file { "/opt/autossh":
+  file { '/opt/autossh':
     ensure  => directory,
     recurse => true,
   } ->

@@ -1,3 +1,5 @@
+# THIS FILE IS MANAGED BY PUPPET. DO NOT EDIT!
+
 # tunnel - secure tunnel back to a known server
 #
 # Provides for remote access
@@ -13,23 +15,23 @@ respawn limit 10 5
 umask 022
 
 script
-  <% if @gatetime -%>
-  export AUTOSSH_GATETIME=<%= @gatetime %>
+<% if @autossh_gatetime -%>
+  export AUTOSSH_GATETIME=<%= @autossh_gatetime %>
 <% end -%>
-<% if @logfile -%>
-  export AUTOSSH_LOGFILE=<%= @logfile %>
+<% if @autossh_logfile -%>
+  export AUTOSSH_LOGFILE=<%= @autossh_logfile %>
 <% end -%>
-<% if @first_poll -%>
-  export AUTOSSH_FIRST_POLL=<%= @first_poll %>
+<% if @autossh_first_poll -%>
+  export AUTOSSH_FIRST_POLL=<%= @autossh_first_poll %>
 <% end -%>
-<% if @poll -%>
-  export AUTOSSH_POLL=<%= @poll %>
+<% if @autossh_poll -%>
+  export AUTOSSH_POLL=<%= @autossh_poll %>
 <% end -%>
-<% if @maxlifetime -%>
-  export AUTOSSH_MAXLIFETIME=<%= @maxlifetime %>
+<% if @autossh_maxlifetime -%>
+  export AUTOSSH_MAXLIFETIME=<%= @autossh_maxlifetime %>
 <% end -%>
-<% if @maxstart -%>
-  export AUTOSSH_MAXSTART=<%= @maxstart %>
+<% if @autossh_maxstart -%>
+  export AUTOSSH_MAXSTART=<%= @autossh_maxstart %>
 <% end -%>
 
   exec su <%= @user %> -c "autossh -M <%= @monitor_port %> -NF <%= @ssh_config %> -i <%= @ssh_id_file %> <%= @real_remote_user %>@<%= @remote_host %>"

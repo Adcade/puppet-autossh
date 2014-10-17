@@ -4,6 +4,7 @@ class autossh {
   file { "/opt/autossh":
     ensure  => directory,
     recurse => true,
+    purge 	=> true,
   } ->
 
   package { 'autossh':

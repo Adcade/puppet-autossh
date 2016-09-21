@@ -1,0 +1,9 @@
+[Unit]
+Description=SSH Tunnel
+After=syslog.target network.target
+
+[Service]
+User=<%= @user %>
+EnvironmentFile=/etc/autossh/<%= @service %>.conf
+ExecStart=/usr/bin/autossh -M <%= @monitor_port %> -NF <%= @ssh_config %> -i <%= @ssh_id_file %> <%= @real_remote_user %>@<%= @remote_host %>
+Restart=on-failure
